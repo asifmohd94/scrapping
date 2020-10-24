@@ -6,7 +6,7 @@ async function scrapeChannel(url) {
     const page = await browser.newPage();
     await page.goto(url);
 
-    const [el] = await page.$x('/html/body/ytd-app/div/ytd-page-manager/ytd-browse/div[3]/ytd-c4-tabbed-header-renderer/app-header-layout/div/app-header/div[2]/div[2]/div/div[1]/div/div[1]/ytd-channel-name/div/div/yt-formatted-string');
+    const [el] = await page.$x('https://academic.oup.com/journals/search-results?page=1&q=data+mining&SearchSourceType=1&allJournals=1');
     const text = await el.getProperty('textContent');
     const name = await text.jsonValue();
 
@@ -16,7 +16,7 @@ async function scrapeChannel(url) {
 
     browser.close();
 
-    return {name, avatarURL}
+    return {name, docURL}
     
 }
 
